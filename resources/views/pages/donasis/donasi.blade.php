@@ -91,8 +91,8 @@
                                             <td>masih segar kok, baru beli kemarin</td>
                                             <td>14 feb</td>
                                             <td>
-                                                <div class="mb-2 badge badge-primary">Verifikasi</div>
-                                                <div class="badge badge-danger">Tolak</div>
+                                                <a href="{{ route('verifikasi_donasi') }}" class="btn mb-2 badge badge-primary">Verifikasi</a>
+                                                <a href="{{ route('tolak_donasi') }}" class="btn badge badge-danger">Tolak</a>
                                             </td>
                                         </tr>
                                     </table>

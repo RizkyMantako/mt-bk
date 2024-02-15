@@ -44,7 +44,7 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form>
+                                    <form method="GET" action="{{ route('edukasis.edukasi') }}">
                                         <div class="input-group">
                                             <input type="text"
                                                 class="form-control"
@@ -70,7 +70,8 @@
                                             <th>Action</th>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
+                                            @foreach ($education as $edu)
+                                            <td>{{ $edu->id }}</td>
                                             <td>
                                                 <a href="#">
                                                     <img alt="image"
@@ -80,17 +81,26 @@
                                                         title="">
                                                 </a>
                                             </td>
-                                            <td>https://unnes.ac.id/feb/sejauh-mana-indonesia-darurat-sampah-makanan/</td>
-                                            <td> Indonesia adalah negara dengan total 19 juta penduduk
-                                                sehingga memungkinkan bumi ini dipijak
-                                            </td>
-                                            <td>kuali, bahan makanan, food waste</td>
-                                            <td>7 juni</td>
+                                            <td>{{ $edu->link_url }}</td>
+                                            <td>{{ $edu->deskripsi }}</td>
+                                            <td>{{ $edu->tags }}</td>
+                                            <td>{{ $edu->created_at }}</td>
                                             <td>
-                                                <div class="mb-2 badge badge-primary">Edit Berita</div>
-                                                <div class="badge badge-danger">Hapus Berita</div>
+
+
+                                                    <div class="container text-center">
+                                                        <div class="row align-items-start">
+                                                          <div class="col  mt-2">
+                                                            <div class=" badge btn badge-primary">Edit Berita</div>
+                                                          </div>
+                                                          <div class=" mt-2 col">
+                                                            <div class=" badge btn badge-danger">Hapus Berita</div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </table>
                                 </div>
                                 <div class="float-right">

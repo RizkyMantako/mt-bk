@@ -84,8 +84,8 @@
                                             <td>{{ $user->rupiah}}</td>
                                             <td>{{ $user->created_at}}</td>
                                             <td>
-                                                <div class="mb-2 badge badge-primary">Edit</div>
-                                                <div class="badge badge-danger">Hapus</div>
+                                                <div class="badge btn badge-primary">Edit</div>
+                                                <div class="badge btn badge-danger">Hapus</div>
                                             </td>
                                         </tr>
                                         @endforeach
