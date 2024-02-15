@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DonasiController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\SampahController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,7 +54,7 @@ Route::get('/riwayat_sampah', function () {
 });
 
 Route::get('/edukasi', function () {
-    return view('pages.edukasi.edukasi');
+    return view('pages.edukasis.edukasi');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -61,3 +64,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
 
 });
+
+
+// verifikasi sampah ke proses sampah
+Route::get('/proses_sampah',[SampahController::class, 'proses'])-> name('verifikasi_sampah');
+Route::get('/riwayat_sampah',[SampahController::class, 'tolak'])-> name('tolak_sampah');
+
+Route::get('/proses_donasi',[DonasiController::class, 'proses'])-> name('verifikasi_donasi');
+Route::get('/riwayat_donasi',[DonasiController::class, 'tolak'])-> name('tolak_donasi');
+
+Route::get('/edukasi', [EducationController::class, 'index'])->name('edukasis.edukasi');

@@ -72,6 +72,7 @@
                                             <th>Action</th>
                                         </tr>
                                         <tr>
+                                            {{-- @foreach  ($sampah as $bin) --}}
                                             <td>1</td>
                                             <td>Rizal</td>
                                             <td>08123456789</td>
@@ -89,8 +90,10 @@
                                             <td>4</td>
                                             <td>2 jan</td>
                                             <td>
-                                                <div class="mb-2 badge badge-primary">Verikasi</div>
-                                                <div class="badge badge-danger">Tolak</div>
+                                                {{-- <div class="btn badge badge-primary">Verikasi</div>
+                                                <div class="mt-2 btn badge badge-danger">Tolak</div> --}}
+                                            <a href="{{ route('verifikasi_sampah') }}" class="btn badge badge-primary">Verifikasi</a>
+                                            <a href="{{ route('tolak_sampah') }}" class="btn badge badge-primary">Tolak</a>
                                             </td>
                                         </tr>
                                     </table>

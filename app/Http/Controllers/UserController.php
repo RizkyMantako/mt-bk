@@ -15,8 +15,9 @@ class UserController extends Controller
         ->when($request->input('name'), function ($query, $name){
             return $query->where('name', 'like', '%'.$name.'%');
         })
-        ->orderBy('id','desc')
+        ->orderBy('id','asc')
         ->paginate(10);
         return view('pages.users.index', compact('users'));
+
     }
 }

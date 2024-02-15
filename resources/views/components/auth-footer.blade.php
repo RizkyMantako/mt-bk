@@ -1,3 +1,3 @@
-  <div class="simple-footer">
+  <div class="fixed-bottom text-center">
       Copyright &copy; Riski Mantako
   </div>
