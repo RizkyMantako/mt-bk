@@ -13,13 +13,12 @@ class UserController extends Controller
 
         // $users = \app\Models\User::paginate(10);
         $users = DB::table('users')
-        ->when($request->input('name'), function ($query, $name){
-            return $query->where('name', 'like', '%'.$name.'%');
-        })
-        ->orderBy('id','asc')
-        ->paginate(10);
+            ->when($request->input('name'), function ($query, $name) {
+                return $query->where('name', 'like', '%' . $name . '%');
+            })
+            ->orderBy('id', 'asc')
+            ->paginate(10);
         return view('pages.users.index', compact('users'));
-
     }
 
     // function hapus data
@@ -33,22 +32,27 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
+    // function edit data user
+    public function edit(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        return response()->json(['user' => $user]);
+    }
 
     // function edit data user
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'point' => 'required|numeric',
-        'rupiah' => 'required|numeric',
-    ]);
+    {
+        $request->validate([
+            'poin' => 'required|numeric',
+            'rupiah' => 'required|numeric',
+        ]);
 
-    $user = User::findOrFail($id);
-    $user->update([
-        'point' => $request->point,
-        'rupiah' => $request->rupiah,
-    ]);
+        $user = User::findOrFail($id);
+        $user->update([
+            'poin' => $request->poin,
+            'rupiah' => $request->rupiah,
+        ]);
 
-    return redirect()->route('users.index')->with('success', 'User updated successfully');
-}
-
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
+    }
 }

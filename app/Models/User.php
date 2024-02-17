@@ -53,6 +53,8 @@ class User extends Authenticatable
         'email',
         'no_hp',
         'password',
+        'poin',
+        'rupiah'
     ];
 
     /**

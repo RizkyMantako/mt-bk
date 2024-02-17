@@ -58,21 +58,22 @@ Route::get('/edukasi', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('home', function(){
-        return view ('pages.dashboard');
+    Route::get('home', function () {
+        return view('pages.dashboard');
     })->name('home');
     Route::resource('users', UserController::class);
-
 });
 
 
 // hapus data user
 Route::delete('/users/{id}', 'UserController@destroy')->name('users.destroy');
+Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
+Route::put('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
 
 
 // verifikasi sampah ke proses sampah
-Route::get('/proses_sampah',[SampahController::class, 'proses'])-> name('verifikasi_sampah');
-Route::get('/riwayat_sampah',[SampahController::class, 'tolak'])-> name('tolak_sampah');
+Route::get('/proses_sampah', [SampahController::class, 'proses'])->name('verifikasi_sampah');
+Route::get('/riwayat_sampah', [SampahController::class, 'tolak'])->name('tolak_sampah');
 
 
 
@@ -83,8 +84,7 @@ Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('proses.
 Route::get('/riwayat_donasi', [DonasiController::class, 'tolak'])->name('riwayat.riwayat_donasi');
 
 // verifikasi donasi
-Route::get('/proses_donasi',[DonasiController::class, 'proses'])-> name('verifikasi_donasi');
+Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('verifikasi_donasi');
 
 // tolak donasi
 Route::get('/tolak_donasi', [DonasiController::class, 'tolak'])->name('tolak_donasi');
-
