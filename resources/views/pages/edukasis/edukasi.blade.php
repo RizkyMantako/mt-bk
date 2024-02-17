@@ -73,8 +73,9 @@
                                         <td>{{ $edu->id }}</td>
                                         <td>
                                             <a href="#">
-                                                <img alt="image" src="{{ $edu->sampul_link ?? asset('img/avatar/avatar-5.png') }}" width="35"
-                                                    data-toggle="title" title="">
+                                                <img alt="image"
+                                                    src="{{ $edu->sampul_link ?? asset('img/avatar/avatar-5.png') }}"
+                                                    width="35" data-toggle="title" title="">
                                             </a>
                                         </td>
                                         <td>{{ $edu->judul }}</td>
@@ -100,10 +101,23 @@
                                             <div class="container text-center">
                                                 <div class="row align-items-start">
                                                     <div class="col  mt-2">
-                                                        <div class=" badge btn badge-primary">Edit Berita</div>
+                                                        <a href="#" class="badge btn badge-primary edit-edu-link"
+                                                            data-toggle="modal" data-target="#editEdumodal"
+                                                            data-edu-id="{{ $edu->id }}" title="edit">
+                                                            <span>Edit Berita</span>
+                                                        </a>
                                                     </div>
                                                     <div class=" mt-2 col">
-                                                        <div class=" badge btn badge-danger">Hapus Berita</div>
+                                                        <a href="{{ route('edukasis.destroy', $edu->id) }}"
+                                                            class="badge btn badge-danger"
+                                                            onclick="event.preventDefault();
+                                                    document.getElementById('delete-edu-form-{{ $edu->id }}').submit();" title="delete">Hapus Berita</a>
+                                                        <form id="delete-edu-form-{{ $edu->id }}"
+                                                            action="{{ route('edukasis.destroy', $edu->id) }}"
+                                                            method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,7 +159,7 @@
             </div>
         </div>
     </section>
-    {{-- Edit Users Modal --}}
+    {{-- add Users Modal --}}
 
     <div id="addmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addmodalTitle"
         aria-hidden="true">
@@ -180,7 +194,54 @@
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Tags</label>
-                            <input class="form-control" type="text" data-role="tagsinput" name="tags">
+                            <select class="form-control" id="tags" name="tags[]" multiple="multiple">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="editEdumodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editEdumodalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="POST" id="formEduEdit" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editEdumodalTitle">Edit Edukasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="sampul">Sampul</label>
+                            <input type="file" class="form-control" id="sampul" name="sampul">
+                        </div>
+                        <div class="form-group">
+                            <label for="judul">Judul</label>
+                            <input type="text" class="form-control" id="judul" name="judul" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="link_url">Link Url</label>
+                            <input type="text" class="form-control" id="link_url" name="link_url" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea id="deskripsi" cols="30" rows="10" class="form-control" id="deskripsi"
+                                name="deskripsi"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="deskripsi">Tags</label>
+                            <select class="form-control" id="tags" name="tags[]" multiple="multiple">
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -201,4 +262,49 @@
 
 <!-- Page Specific JS File -->
 <script src="{{ asset('js/page/features-posts.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#tags').select2({
+        tags: true,
+        tokenSeparators: [','],
+        width: '100%' // Menambahkan opsi lebar untuk memastikan tampilan yang benar
+    });
+    $('.edit-edu-link').on('click', function() {
+    // Get the education ID from the data attribute
+    var eduId = $(this).data('edu-id');
+    $.ajax({
+        url: '/edukasi/' + eduId + '/edit',
+        type: 'GET',
+        success: function(response) {
+            var edukasi = response.edukasi;
+            $('#editEdumodal #judul').val(edukasi.judul);
+            $('#editEdumodal #link_url').val(edukasi.link_url);
+            $('#editEdumodal #deskripsi').val(edukasi.deskripsi);
+            var tagsArray = JSON.parse(edukasi.tags);
+            $('#editEdumodal #tags').empty(); 
+                $.each(tagsArray, function(index, tag) {
+                    var option = new Option(tag, tag, true, true);
+                    $('#editEdumodal #tags').append(option).trigger('change');
+                });
+
+            $('#editEdumodal #tags').select2({
+                tags: true,
+                tokenSeparators: [','],
+                width: '100%',
+                data: tagsArray
+            });
+
+            var formAction = '/edukasi/' + eduId + '/update';
+            $('#formEduEdit').attr('action', formAction);
+
+        },
+        error: function(error) {
+            console.error('Error fetching education data: ', error);
+        }
+    });
+});
+});
+</script>
 @endpush

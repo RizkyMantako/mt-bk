@@ -79,6 +79,9 @@ Route::get('/riwayat_sampah', [SampahController::class, 'tolak'])->name('tolak_s
 
 Route::get('/edukasi', [EducationController::class, 'index'])->name('edukasis.edukasi');
 Route::post('/edukasi/save', [EducationController::class, 'store'])->name('edukasis.store');
+Route::get('/edukasi/{id}/edit', [EducationController::class, 'edit'])->name('edukasis.edit');
+Route::put('/edukasi/{id}/update', [EducationController::class, 'update'])->name('edukasis.update');
+Route::delete('/edukasi/{id}/delete', [EducationController::class, 'destroy'])->name('edukasis.destroy');
 Route::get('/sampah', [SampahController::class, 'index'])->name('sampah.sampah');
 Route::get('/donasi', [DonasiController::class, 'index'])->name('donasis.donasi');
 Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('proses.proses_donasi');
