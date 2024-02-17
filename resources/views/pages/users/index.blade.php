@@ -160,13 +160,8 @@
 <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 <script>
     function formatRupiah(input) {
-        // Hapus karakter selain angka
         let value = input.value.replace(/\D/g, '');
-        
-        // Format rupiah dengan titik sebagai pemisah ribuan
         value = new Intl.NumberFormat('id-ID').format(value);
-        
-        // Tampilkan hasil format ke input
         input.value = 'Rp ' + value;
         document.getElementById('rupiah').value = value.replace(/\./g, '');
     }
@@ -184,7 +179,6 @@
                     $('#editusersmodal #rupiah').val(user.rupiah);
                     value = new Intl.NumberFormat('id-ID').format(user.rupiah);
                     $('#editusersmodal #rupiah_format').val('Rp ' + value);
-                    console.log(user);
                 },
                 error: function(error) {
                     console.error('Error fetching user data: ', error);
