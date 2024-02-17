@@ -10,8 +10,18 @@ class Edukasi extends Model
     use HasFactory;
     protected $fillable = [
         'sampul',
+        'judul',
         'link_url',
         'deskripsi',
         'tags',
     ];
+
+    protected $visible = ['id', 'sampul', 'judul', 'link_url', 'deskripsi', 'tags', 'sampul_link'];
+    protected $appends = ['sampul_link'];
+
+    public function getSampulLinkAttribute()
+    {
+        // Pastikan bahwa kolom 'sampul' sesuai dengan struktur penyimpanan Anda
+        return asset('storage/' . $this->sampul);
+    }
 }

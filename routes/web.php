@@ -78,6 +78,7 @@ Route::get('/riwayat_sampah', [SampahController::class, 'tolak'])->name('tolak_s
 
 
 Route::get('/edukasi', [EducationController::class, 'index'])->name('edukasis.edukasi');
+Route::post('/edukasi/save', [EducationController::class, 'store'])->name('edukasis.store');
 Route::get('/sampah', [SampahController::class, 'index'])->name('sampah.sampah');
 Route::get('/donasi', [DonasiController::class, 'index'])->name('donasis.donasi');
 Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('proses.proses_donasi');
