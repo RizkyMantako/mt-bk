@@ -41,9 +41,7 @@ Route::get('/proses_donasi', function () {
     return view('pages.proses.proses_donasi');
 });
 
-Route::get('/proses_sampah', function () {
-    return view('pages.proses.proses_sampah');
-});
+
 
 Route::get('/riwayat_donasi', function () {
     return view('pages.riwayat.riwayat_donasi');
@@ -72,7 +70,8 @@ Route::put('/users/{id}/update', [UserController::class, 'update'])->name('users
 
 
 // verifikasi sampah ke proses sampah
-Route::get('/proses_sampah', [SampahController::class, 'proses'])->name('verifikasi_sampah');
+Route::get('/proses_sampah', [SampahController::class, 'proses']);
+Route::put('/proses_sampah/{id}', [SampahController::class, 'verifikasi'])->name('verifikasi_sampah');
 Route::get('/riwayat_sampah', [SampahController::class, 'tolak'])->name('tolak_sampah');
 
 

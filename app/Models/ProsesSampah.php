@@ -19,9 +19,6 @@ class ProsesSampah extends Model
         return $this->belongsTo(Sampah::class);
     }
 
-    protected $fillable = [
-        'user_id',
-        'sampah_id',
-        'status',
-    ];
+    protected $guarded = ['id'];
+
 }
