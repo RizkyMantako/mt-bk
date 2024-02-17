@@ -28,7 +28,7 @@ class EducationController extends Controller
                 "judul" => $req->judul,
                 "deskripsi" => $req->deskripsi,
                 "link_url" => $req->link_url,
-                "tags" => $req->tags ?? 'asdas',
+                "tags" => $req->tags ?? '[]',
             ]);
 
             return redirect()->route('edukasis.edukasi')->with('success', 'Edukasi added successfully');
