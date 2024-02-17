@@ -66,6 +66,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+// hapus data user
+Route::delete('/users/{id}', 'UserController@destroy')->name('users.destroy');
+
+
 // verifikasi sampah ke proses sampah
 Route::get('/proses_sampah',[SampahController::class, 'proses'])-> name('verifikasi_sampah');
 Route::get('/riwayat_sampah',[SampahController::class, 'tolak'])-> name('tolak_sampah');
