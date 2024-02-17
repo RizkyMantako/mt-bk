@@ -84,8 +84,8 @@
                                             <td>{{ $user->rupiah}}</td>
                                             <td>{{ $user->created_at}}</td>
                                             <td>
-                                                <div class="badge btn badge-primary">Edit</div>
-                                                <div class="badge btn badge-danger">Hapus</div>
+                                                <a href="#editusersmodal" class="badge btn badge-primary" data-toggle="modal" title="edit"><span>Edit</span></a>
+                                                <a href="#deleteusersmodal" class="badge btn badge-danger" data-toggle="modal" title="delete">Hapus</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -100,6 +100,56 @@
                 </div>
             </div>
         </section>
+    </div>
+
+    {{-- Edit Users Modal --}}
+    <div id="editusersmodal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Users</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Point</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Rupiah</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-info" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Delete Users Modal --}}
+    <div id="deleteusersmodal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Users</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Anda yakin ingin menghapus salah satu user ?</p>
+                        <p class="text-warning"><small>Data yang sudah dihapus tidak dapat kembali</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
 

@@ -63,6 +63,7 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Sampul</th>
+                                            <th>Judul</th>
                                             <th>Link</th>
                                             <th>Deskripsi</th>
                                             <th>tags</th>
@@ -81,6 +82,7 @@
                                                         title="">
                                                 </a>
                                             </td>
+                                            <td>{{ $edu->judul }}</td>
                                             <td>{{ $edu->link_url }}</td>
                                             <td>{{ $edu->deskripsi }}</td>
                                             <td>{{ $edu->tags }}</td>

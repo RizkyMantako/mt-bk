@@ -4,23 +4,28 @@
             <a href="index.html">MeyTrash</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">MT</a>
+            <a href="index.html">
+                <img src="{{ asset('img/logo-MT.png') }}"
+                    alt="image"
+                    width="35"
+                    data-toggle="logo"></a>
+
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Admin </li>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link"
-                    href="{{ url('users') }}"><i class="fa-solid fa-user"></i> <span>User</span></a>
+                    href="{{ url('users') }}"><i class="fas fa-user"></i> <span>User</span></a>
             </li>
             <hr>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link"
-                    href="{{ url('edukasi') }}"><i class="fa-solid fa-book-open-reader"></i> <span>Edukasi</span></a>
+                    href="{{ url('edukasi') }}"><i class="fas fa-book-open-reader"></i> <span>Edukasi</span></a>
             </li>
             <hr>
              <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link"
-                    href="{{ url('sampah') }}"><i class="fa-solid fa-trash-can"></i> <span>Sampah</span></a>
+                    href="{{ url('sampah') }}"><i class="fas fa-trash-can"></i> <span>Sampah</span></a>
             </li>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link"
@@ -45,7 +50,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a href="#"
-                    class="nav-link has-dropdown"><i class="fa fa-history"></i><span>Riwayat</span></a>
+                    class="nav-link has-dropdown"><i class="fas fa-history"></i><span>Riwayat</span></a>
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('dashboard-general-dashboard') ? 'active' : '' }}'>
                         <a class="nav-link"

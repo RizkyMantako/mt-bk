@@ -44,7 +44,7 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form>
+                                    <form method="GET" action="{{ route('sampah.sampah') }}">
                                         <div class="input-group">
                                             <input type="text"
                                                 class="form-control"
@@ -71,30 +71,31 @@
                                             <th>Created_at</th>
                                             <th>Action</th>
                                         </tr>
+                                        @foreach  ($sampahs as $bin)
                                         <tr>
-                                            {{-- @foreach  ($sampah as $bin) --}}
-                                            <td>1</td>
-                                            <td>Rizal</td>
-                                            <td>08123456789</td>
-                                            <td>https://www.google.com/maps/place/Bukit+Baruga+Antang/@-5.1565938,119.4853797,17z/data=!3m1!4b1!4m6!3m5!1s0x2dbee3400c0c1727:0xc749f3fb44786f21!8m2!3d-5.1565938!4d119.4879546!16s%2Fg%2F11gbl32_87?entry=ttu</td>
+                                            <td>{{ $bin->user_id }}</td>
+                                            <td>{{ $bin->nama }}</td>
+                                            <td>{{ $bin->no_hp }}</td>
+                                            <td>{{ $bin->alamat }}</td>
                                             <td>
                                                 <a href="#">
                                                     <img alt="image"
-                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
+                                                        src="{{ $bin->foto_sampah }}"
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
                                                 </a>
                                             </td>
-                                            <td>makanan sisa kemarin</td>
-                                            <td>4</td>
-                                            <td>2 jan</td>
+                                            <td>{{ $bin->deskripsi }}</td>
+                                            <td>{{ $bin->berat_sampah }}</td>
+                                            <td>{{ $bin->created_at }}</td>
                                             <td>
                                                 {{-- <div class="btn badge badge-primary">Verikasi</div>
                                                 <div class="mt-2 btn badge badge-danger">Tolak</div> --}}
                                             <a href="{{ route('verifikasi_sampah') }}" class="btn badge badge-primary">Verifikasi</a>
                                             <a href="{{ route('tolak_sampah') }}" class="btn badge badge-primary">Tolak</a>
-                                            </td>
+                                        </td>
+                                        @endforeach
                                         </tr>
                                     </table>
                                 </div>

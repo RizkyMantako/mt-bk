@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('edukasis', function (Blueprint $table) {
             $table->id();
             $table->string('sampul');
+            $table->string('judul');
             $table->string('link_url');
             $table->text('deskripsi');
             $table->text('tags');

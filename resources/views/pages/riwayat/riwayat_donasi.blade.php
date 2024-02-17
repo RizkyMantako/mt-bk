@@ -44,7 +44,7 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form>
+                                    <form method="GET" action="{{ route('riwayat.riwayat_donasi') }}">
                                         <div class="input-group">
                                             <input type="text"
                                                 class="form-control"
@@ -70,46 +70,28 @@
                                             <th>Created At</th>
                                             <th>Status</th>
                                         </tr>
+                                        @foreach ($riwayat_donasi as $xdonasi)
                                         <tr>
-                                            <td>2</td>
-                                            <td>agus</td>
-                                            <td>082112345678</td>
+                                            <td>{{ $xdonasi->user_id }}</td>
+                                            <td>{{ $xdonasi->nama }}</td>
+                                            <td>{{ $xdonasi->no_hp }}</td>
                                             <td>
                                                 <a href="#">
                                                     <img alt="image"
-                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
+                                                        src="{{ $xdonasi->foto_makanan }}"
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
                                                 </a>
                                             </td>
-                                            <td>3</td>
-                                            <td>Bahan Makanan</td>
-                                            <td>3 mei</td>
+                                            <td>{{ $xdonasi->berat_makanan }}</td>
+                                            <td>{{ $xdonasi->jenis_makanan }}</td>
+                                            <td>{{ $xdonasi->created_at }}</td>
                                             <td>
                                                 <div class="badge badge-primary">Selesai</div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>mila</td>
-                                            <td>0832756332</td>
-                                            <td>
-                                                <a href="#">
-                                                    <img alt="image"
-                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
-                                                        width="35"
-                                                        data-toggle="title"
-                                                        title="">
-                                                </a>
-                                            </td>
-                                            <td>1</td>
-                                            <td>Sisa Makanan</td>
-                                            <td>9 april</td>
-                                            <td>
-                                                <div class="badge badge-danger">Ditolak</div>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </table>
                                 </div>
                                 <div class="float-right">

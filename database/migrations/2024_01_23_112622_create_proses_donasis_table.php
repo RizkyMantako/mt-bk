@@ -14,7 +14,13 @@ return new class extends Migration
         Schema::create('proses_donasis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('donasi_id');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->string('alamat');
+            $table->string('foto_makanan')->nullable();
+            $table->string('jenis_donasi');
+            $table->string('deskripsi');
+            $table->bigInteger('berat_makanan');
             $table->string('status', 10)->default('In Progres');
             $table->timestamps();
         });
