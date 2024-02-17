@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('riwayat_donasis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('donasi_id');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->string('foto_makanan');
+            $table->bigInteger('berat_makanan');
+            $table->string('jenis_donasi');
             $table->string('status', 15);
             $table->timestamps();
         });

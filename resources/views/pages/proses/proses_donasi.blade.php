@@ -73,31 +73,33 @@
                                             <th>Update Poin</th>
                                             <th>Status</th>
                                         </tr>
+                                        @foreach ($proses_donasi as $vdonasi)
                                         <tr>
-                                            <td>2</td>
-                                            <td>kukuh haryanto</td>
-                                            <td>098769032</td>
-                                            <td>https://www.google.com/maps/place/Moncongloe+Bulu,+Kec.+Moncong+Loe,+Kabupaten+Maros,+Sulawesi+Selatan+90562/@-5.157291,119.5702622,17z/data=!3m1!4b1!4m6!3m5!1s0x2dbee516c91b8885:0x40109360bd227254!8m2!3d-5.157291!4d119.5728371!16s%2Fg%2F11h6n930jq?entry=ttu</td>
+                                            <td>{{ $vdonasi->user_id }}</td>
+                                            <td>{{ $vdonasi->nama }}</td>
+                                            <td>{{ $vdonasi->no_hp }}</td>
+                                            <td>{{ $vdonasi->alamat }}</td>
                                             <td>
                                                 <a href="#">
                                                     <img alt="image"
-                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
+                                                        src="{{ $vdonasi->foto_makanan }}"
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
                                                 </a>
                                             </td>
-                                            <td>Bahan Makanan</td>
-                                            <td>1</td>
-                                            <td>kangkung baru</td>
-                                            <td>7 juni</td>
+                                            <td>{{ $vdonasi->jenis_donasi }}</td>
+                                            <td>{{ $vdonasi->berat_makanan }}</td>
+                                            <td>{{ $vdonasi->deskripsi }}</td>
+                                            <td>{{ $vdonasi->created_at }}</td>
                                             <td>
-                                                <div class="badge badge-warning">Edit Poin</div>
+                                                <a href="#editprosesdonasi" class="badge btn badge-warning" data-toggle="modal" title="edit poin">Edit Poin</a>
                                             </td>
                                             <td>
                                                 <div class="badge badge-primary">Selesai</div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </table>
                                 </div>
                                 <div class="float-right">
@@ -140,6 +142,30 @@
                 </div>
             </div>
         </section>
+    </div>
+
+    {{-- edit button poin --}}
+    <div id="editprosesdonasi" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Poin</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Point</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-info" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
 

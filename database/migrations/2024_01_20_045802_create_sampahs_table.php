@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('sampahs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->string('alamat');
             $table->string('foto_sampah');
             $table->text('deskripsi');
             $table->integer('berat_sampah');

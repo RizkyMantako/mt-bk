@@ -26,7 +26,9 @@ class Donasi extends Model
 
     protected $fillable = [
         'user_id',
-        'detailakun_id',
+        'nama',
+        'no_hp',
+        'alamat',
         'foto_makanan',
         'deskripsi',
         'berat_makanan',

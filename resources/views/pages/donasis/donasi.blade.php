@@ -44,7 +44,7 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form>
+                                    <form method="GET" action="{{ route('donasis.donasi') }}">
                                         <div class="input-group">
                                             <input type="text"
                                                 class="form-control"
@@ -57,7 +57,7 @@
                                 </div>
 
                                 <div class="clearfix mb-3"></div>
-
+                                
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
@@ -72,28 +72,30 @@
                                             <th>Created_at</th>
                                             <th>Action</th>
                                         </tr>
+                                        @foreach ($donasis as $donate)
                                         <tr>
-                                            <td>3</td>
-                                            <td>Rizal Fakhri</td>
-                                            <td>098763456</td>
-                                            <td>https://www.google.com/maps/place/Pondok+Dhea/@-5.1349406,119.4476347,17z/data=!3m1!4b1!4m6!3m5!1s0x2dbefdac03f691fb:0x7bca9a042079e02!8m2!3d-5.1349406!4d119.4502096!16s%2Fg%2F11rsv9_btn?entry=ttu</td>
+                                            <td>{{ $donate->user_id }}</td>
+                                            <td>{{ $donate->nama }}</td>
+                                            <td>{{ $donate->no_hp }}</td>
+                                            <td>{{ $donate->alamat }}</td>
                                             <td>
                                                 <a href="#">
                                                     <img alt="image"
-                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
+                                                        src="{{ $donate->foto_makanan }}"
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
                                                 </a>
                                             </td>
-                                            <td>Bahan Makanan</td>
-                                            <td>1</td>
-                                            <td>masih segar kok, baru beli kemarin</td>
-                                            <td>14 feb</td>
+                                            <td>{{ $donate->jenis_donasi }}</td>
+                                            <td>{{ $donate->berat_makanan }}</td>
+                                            <td>{{ $donate->deskripsi }}</td>
+                                            <td>{{ $donate->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('verifikasi_donasi') }}" class="btn mb-2 badge badge-primary">Verifikasi</a>
-                                                <a href="{{ route('tolak_donasi') }}" class="btn badge badge-danger">Tolak</a>
+                                                <a href="{{ route('verifikasi_donasi') }}" class="btn badge badge-primary">Verifikasi</a>
+                                                <a href="{{ route('tolak_donasi') }}" class="btn badge badge-primary">Tolak</a>
                                             </td>
+                                            @endforeach
                                         </tr>
                                     </table>
                                 </div>
