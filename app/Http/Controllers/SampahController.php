@@ -61,8 +61,8 @@ class SampahController extends Controller
                 "status" => $sampah->status,
                 "deskripsi" => $req->deskripsi
             ]);
+            return redirect('/riwayat_sampah');
         }
-        return redirect('/riwayat_sampah');
     }
 
     public function tolak(Request $req)

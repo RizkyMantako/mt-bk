@@ -185,6 +185,7 @@
             var formAction = '/proses_sampah/' + binId ;
             $('#proses-sampah-verifikasi-form').attr('action', formAction);
             $('#proses-sampah-verifikasi-form #editusersmodalTitle').html('Verifikasi Sampah');
+            $('#proses-sampah-verifikasi-form #status').val('Terverifikasi');
             $('#proses-sampah-verifikasi-form #deskripsiSampah').show()
             $('#proses-sampah-verifikasi-form #alertTolak').hide()
             $('#proses-sampah-verifikasi-form #inputDeskripsi').attr('required',true)
