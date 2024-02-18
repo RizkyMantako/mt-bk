@@ -66,7 +66,7 @@
                                             <th>Nomor Hp</th>
                                             <th>Alamat</th>
                                             <th>Foto Makanan</th>
-                                            <th>Jenis Donasi</th>
+                                            <th>Jenis Makanan</th>
                                             <th>Berat Makanan</th>
                                             <th>Deskripsi</th>
                                             <th>Created_at</th>
@@ -88,7 +88,7 @@
                                                         title="">
                                                 </a>
                                             </td>
-                                            <td>{{ $vdonasi->jenis_donasi }}</td>
+                                            <td>{{ $vdonasi->jenis_makanan }}</td>
                                             <td>{{ $vdonasi->berat_makanan }}</td>
                                             <td>{{ $vdonasi->deskripsi }}</td>
                                             <td>{{ $vdonasi->created_at }}</td>

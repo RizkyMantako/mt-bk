@@ -62,7 +62,7 @@
                                         <th>Nomor Hp</th>
                                         <th>Alamat</th>
                                         <th>Foto Makanan</th>
-                                        <th>Jenis Donasi</th>
+                                        <th>Jenis Makanan</th>
                                         <th>Berat Makanan</th>
                                         <th>Deskripsi</th>
                                         <th>Created_at</th>
@@ -80,7 +80,7 @@
                                                     data-toggle="title" title="">
                                             </a>
                                         </td>
-                                        <td>{{ $donate->jenis_donasi }}</td>
+                                        <td>{{ $donate->jenis_makanan }}</td>
                                         <td>{{ $donate->berat_makanan }}</td>
                                         <td>{{ $donate->deskripsi }}</td>
                                         <td>{{ $donate->created_at }}</td>

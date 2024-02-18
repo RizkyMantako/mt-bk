@@ -45,7 +45,7 @@ class DonasiController extends Controller
                 "alamat" => $donasi->alamat,
                 "berat_makanan" => $donasi->berat_makanan,
                 "foto_makanan" => $donasi->foto_makanan,
-                "jenis_donasi" => $donasi->jenis_donasi,
+                "jenis_makanan" => $donasi->jenis_makanan,
                 "deskripsi" => $req->deskripsi
             ]);
             return redirect('/proses_donasi');
@@ -56,8 +56,7 @@ class DonasiController extends Controller
                 "no_hp" => $donasi->no_hp,
                 "foto_makanan" => $donasi->foto_makanan,
                 "berat_makanan" => $donasi->berat_makanan,
-                "jenis_makanan" => $donasi->jenis_makanan ?? 0,
-                "jenis_donasi" => $donasi->jenis_donasi,
+                "jenis_makanan" => $donasi->jenis_makanan,
                 "status" => $donasi->status,
                 "deskripsi" => $req->deskripsi
             ]);
