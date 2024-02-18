@@ -98,4 +98,63 @@ class DonasiController extends Controller
 
         return redirect('/riwayat_donasi');
     }
+
+    public function add(Request $request)
+    {
+        $data = $request->validate([
+            'user_id' => 'required',
+            'nama' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            'foto_makanan' => 'required',
+            'deskripsi' => 'required',
+            'berat_makanan' => 'required',
+            'jenis_makanan' => 'required',
+            'status' => 'nullable',
+        ]);
+
+        $foto_makanan_path = null;
+        if ($request->hasFile('foto_makanan')) {
+            $foto_makanan = $request->file('foto_makanan');
+            $foto_makanan_path = $foto_makanan->store('makanan_photos', 'public');
+        }
+
+        Donasi::create([
+            'user_id' => $data['user_id'],
+            'nama' => $data['nama'],
+            'no_hp' => $data['no_hp'],
+            'alamat' => $data['alamat'],
+            'foto_makanan' => $foto_makanan_path,
+            'deskripsi' => $data['deskripsi'],
+            'berat_makanan' => $data['berat_makanan'],
+            'jenis_makanan' => $data['jenis_makanan'],
+            'status' => $data['status'],
+        ]);
+        return response()->json(['message' => 'Donasi created successfully.\n', $data], 201);
+    }
+
+    public function getList() {
+        $donasi = Donasi::all();
+        return response()->json([
+            'success' => true,
+            'data' => $donasi
+        ]);
+    }
+
+    public function detail($id)
+    {
+        $donasi = Donasi::find($id);
+
+        if (!$donasi) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Id tidak ditemukan',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $donasi,
+        ]);
+    }
 }

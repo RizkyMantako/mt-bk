@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DonasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,10 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::post('edit-profile', [AuthController::class, 'editProfile']);
     Route::get('user', [AuthController::class, 'getUserInfo']);
+});
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('donasi/add', [DonasiController::class, 'add']);
+    Route::get('donasi/getlist', [DonasiController::class, 'getlist']);
+    Route::get('donasi/detail/{id}', [DonasiController::class, 'detail']);
 });
