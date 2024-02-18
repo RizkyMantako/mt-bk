@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\RiwayatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,11 @@ Route::middleware('auth:api')->group(function () {
 Route::middleware('auth:api')->group(function () {
     Route::get('edukasi/getlist', [EducationController::class, 'getlist']);
     Route::get('edukasi/detail/{id}', [EducationController::class, 'detail']);
+});
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('riwayat/donasi/getlist', [RiwayatController::class, 'getListDonasi']);
+    Route::get('riwayat/donasi/detail/{id}', [RiwayatController::class, 'getDetailDonasi']);
+    Route::get('riwayat/sampah/detail/{id}', [RiwayatController::class, 'getDetailSampah']);
+    Route::get('riwayat/sampah/getlist', [RiwayatController::class, 'getListSampah']);
 });
