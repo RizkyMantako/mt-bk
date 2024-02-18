@@ -73,11 +73,13 @@ Route::put('/users/{id}/update', [UserController::class, 'update'])->name('users
 Route::get('/proses_sampah', [SampahController::class, 'proses']);
 Route::put('/proses_sampah/{id}', [SampahController::class, 'verifikasi'])->name('verifikasi_sampah');
 Route::get('/riwayat_sampah', [SampahController::class, 'tolak'])->name('tolak_sampah');
+Route::put('/selesaikan_sampah/{id}', [SampahController::class, 'selesaiProses'])->name('selesai_sampah');
 
 
 Route::put('/proses_donasi/{id}', [DonasiController::class, 'verifikasi'])->name('verifikasi_donasi');
 Route::get('/riwayat_donasi', [DonasiController::class, 'tolak'])->name('riwayat.riwayat_donasi');
 Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('proses.proses_donasi');
+Route::put('/selesaikan_donasi/{id}', [DonasiController::class, 'selesaiProses'])->name('selesai_donasi');
 
 
 Route::get('/edukasi', [EducationController::class, 'index'])->name('edukasis.edukasi');

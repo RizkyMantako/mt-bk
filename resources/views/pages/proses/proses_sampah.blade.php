@@ -69,7 +69,6 @@
                                             <th>Berat Sampah</th>
                                             <th>Deskripsi</th>
                                             <th>Created_at</th>
-                                            <th>Update Poin</th>
                                             <th>Status</th>
                                         </tr>
                                         @foreach ($proses_sampah as $vsampah)
@@ -90,11 +89,19 @@
                                             <td>{{ $vsampah->berat_sampah }}</td>
                                             <td>{{ $vsampah->deskripsi }}</td>
                                             <td>{{ $vsampah->created_at }}</td>
+                                            
                                             <td>
-                                                <a href="#editpoinsampah" class="btn badge badge-warning" data-toggle="modal" title="edit poin">Edit Poin</a>
-                                            </td>
-                                            <td>
-                                                <div class="btn badge badge-primary">Selesai</div>
+                                                <a href="{{ route('selesai_sampah', $vsampah->id) }}"
+                                                    class="btn badge badge-primary"
+                                                    onclick="event.preventDefault();
+                                                        document.getElementById('selesai-form-{{ $vsampah->id }}').submit();" title="selesai">Selesai</a>
+    
+                                                <form id="selesai-form-{{ $vsampah->id }}"
+                                                    action="{{ route('selesai_sampah', $vsampah->id) }}" method="POST"
+                                                    style="display: none;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

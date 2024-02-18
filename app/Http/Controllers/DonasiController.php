@@ -26,7 +26,7 @@ class DonasiController extends Controller
         $proses_donasi = DB::table('proses_donasis')
             ->when($request->input('user_id'), function ($query, $user_id) {
                 return $query->where('user_id', 'like', '%' . $user_id . '%');
-            })
+            })->where('status', 'In Proses')
             ->orderBy('id', 'asc')->paginate(10);
         return view('pages.proses.proses_donasi', compact('proses_donasi'));
     }
@@ -73,5 +73,29 @@ class DonasiController extends Controller
             })
             ->orderBy('id', 'asc')->paginate(10);
         return view('pages.riwayat.riwayat_donasi', compact('riwayat_donasi'));
+    }
+
+    public function selesaiProses(Request $req, $id)
+    {
+        $proses = ProsesDonasi::findOrFail($id);
+
+        $proses->update([
+            "status" => "Selesai"
+        ]);
+
+        $donasi = Donasi::where('nama', $proses->nama)->first();
+
+        RiwayatDonasi::create([
+            "user_id" => $donasi->user_id,
+            "nama" => $donasi->nama,
+            "no_hp" => $donasi->no_hp,
+            "foto_makanan" => $donasi->foto_makanan,
+            "berat_makanan" => $donasi->berat_makanan,
+            "jenis_makanan" => $donasi->jenis_makanan,
+            "status" => "Selesai",
+            "deskripsi" => $req->deskripsi
+        ]);
+
+        return redirect('/riwayat_donasi');
     }
 }

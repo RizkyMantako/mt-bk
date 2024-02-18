@@ -27,7 +27,7 @@ class SampahController extends Controller
         $proses_sampah = DB::table('proses_sampahs')
             ->when($req->input('user_id'), function ($query, $user_id) {
                 return $query->where('user_id', 'like', '%' . $user_id . '%');
-            })
+            })->where('status', 'In Proses')
             ->orderBy('id', 'asc')->paginate(10);
         return view('pages.proses.proses_sampah', compact('proses_sampah'));
     }
@@ -73,5 +73,29 @@ class SampahController extends Controller
             })
             ->orderBy('id', 'asc')->paginate(10);
         return view('pages.riwayat.riwayat_sampah', compact('riwayat_sampah'));
+    }
+
+    public function selesaiProses(Request $req, $id)
+    {
+        $proses = ProsesSampah::findOrFail($id);
+        
+        $proses->update([
+            "status" => "Selesai"
+        ]);
+
+        $sampah = Sampah::where('nama', $proses->nama)->first();
+        
+        RiwayatSampah::create([
+            "user_id" => $sampah->user_id,
+            "nama" => $sampah->nama,
+            "no_hp" => $sampah->no_hp,
+            "alamat" => $sampah->alamat,
+            "foto_sampah" => $sampah->foto_sampah,
+            "berat_sampah" => $sampah->berat_sampah,
+            "jenis_sampah" => 1,
+            "status" => "Selesai",
+            "deskripsi" => $req->deskripsi
+        ]);
+        return redirect('/riwayat_sampah');
     }
 }
