@@ -149,10 +149,13 @@
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="status" name="status" value=terverifikasi>
-                        <div class="form-group">
+                        <div class="form-group" id="deskripsiDonasi">
                             <label for="rupiah">Deskripsi</label>
-                            <textarea name="deskripsi" id="" cols="30" rows="10" class="form-control"
+                            <textarea name="deskripsi" id="inputDeskripsi" cols="30" rows="10" class="form-control"
                                 required></textarea>
+                        </div>
+                        <div class="form-group d-hidden" id="alertTolak">
+                            <p>Apakah anda yakin ingin menolak pengajuan donasi ini?</p>
                         </div>
 
                     </div>
@@ -179,6 +182,10 @@
             var formAction = '/proses_donasi/' + binId ;
             $('#proses-donasi-verifikasi-form').attr('action', formAction);
             $('#proses-donasi-verifikasi-form #status').val('Terverifikasi');
+            $('#proses-donasi-verifikasi-form #editusersmodalTitle').html('Verifikasi Donasi');
+            $('#proses-donasi-verifikasi-form #deskripsiDonasi').show()
+            $('#proses-donasi-verifikasi-form #alertTolak').hide()
+            $('#proses-donasi-verifikasi-form #inputDeskripsi').attr('required',true)
 
         });
         $('.tolak-donasi-link').on('click', function() {
@@ -186,6 +193,10 @@
             var formAction = '/proses_donasi/' + binId ;
             $('#proses-donasi-verifikasi-form').attr('action', formAction);
             $('#proses-donasi-verifikasi-form #status').val('Ditolak');
+            $('#proses-donasi-verifikasi-form #editusersmodalTitle').html('Tolak Donasi');
+            $('#proses-donasi-verifikasi-form #deskripsiDonasi').hide()
+            $('#proses-donasi-verifikasi-form #alertTolak').show()
+            $('#proses-donasi-verifikasi-form #inputDeskripsi').attr('required',false)
 
         });
 </script>

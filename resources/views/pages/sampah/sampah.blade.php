@@ -152,12 +152,14 @@
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="status" name="status" value=terverifikasi>
-                        <div class="form-group">
+                        <div class="form-group" id="deskripsiSampah">
                             <label for="rupiah">Deskripsi</label>
-                            <textarea name="deskripsi" id="" cols="30" rows="10" class="form-control"
+                            <textarea name="deskripsi" id="inputDeskripsi" cols="30" rows="10" class="form-control"
                                 required></textarea>
                         </div>
-
+                        <div class="form-group d-hidden" id="alertTolak">
+                            <p>Apakah anda yakin ingin menolak pengajuan sampah ini?</p>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -178,11 +180,15 @@
 <script src="{{ asset('js/page/features-posts.js') }}"></script>
 
 <script>
-        $('.edit-bin-link').on('click', function() {
+    $('.edit-bin-link').on('click', function() {
             var binId = $(this).data('bin-id');
             var formAction = '/proses_sampah/' + binId ;
             $('#proses-sampah-verifikasi-form').attr('action', formAction);
-            $('#proses-sampah-verifikasi-form #status').val('Terverifikasi');
+            $('#proses-sampah-verifikasi-form #editusersmodalTitle').html('Verifikasi Sampah');
+            $('#proses-sampah-verifikasi-form #deskripsiSampah').show()
+            $('#proses-sampah-verifikasi-form #alertTolak').hide()
+            $('#proses-sampah-verifikasi-form #inputDeskripsi').attr('required',true)
+           
 
         });
         $('.tolak-bin-link').on('click', function() {
@@ -190,6 +196,11 @@
             var formAction = '/proses_sampah/' + binId ;
             $('#proses-sampah-verifikasi-form').attr('action', formAction);
             $('#proses-sampah-verifikasi-form #status').val('Ditolak');
+            $('#proses-sampah-verifikasi-form #editusersmodalTitle').html('Tolak Sampah');
+            $('#proses-sampah-verifikasi-form #deskripsiSampah').hide()
+            $('#proses-sampah-verifikasi-form #alertTolak').show()
+            $('#proses-sampah-verifikasi-form #inputDeskripsi').attr('required',false)
+
 
         });
 </script>
