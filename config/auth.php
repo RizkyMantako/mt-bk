@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'jwt', // Menggunakan JWT untuk otentikasi API
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*
