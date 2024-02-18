@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\ProsesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +46,11 @@ Route::middleware('auth:api')->group(function () {
     Route::get('riwayat/donasi/detail/{id}', [RiwayatController::class, 'getDetailDonasi']);
     Route::get('riwayat/sampah/detail/{id}', [RiwayatController::class, 'getDetailSampah']);
     Route::get('riwayat/sampah/getlist', [RiwayatController::class, 'getListSampah']);
+});
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('proses/donasi/getlist', [ProsesController::class, 'getListDonasi']);
+    Route::get('proses/donasi/detail/{id}', [ProsesController::class, 'getDetailDonasi']);
+    Route::get('proses/sampah/detail/{id}', [ProsesController::class, 'getDetailSampah']);
+    Route::get('proses/sampah/getlist', [ProsesController::class, 'getListSampah']);
 });

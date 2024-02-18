@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('riwayat_sampahs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('sampah_id');
-            $table->string('status', 15);
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->binary('foto_sampah');
+            $table->bigInteger('berat_sampah');
+            $table->string('jenis_sampah');
+            $table->string('status');
             $table->timestamps();
         });
     }

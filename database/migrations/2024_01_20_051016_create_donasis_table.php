@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('donasis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->string('foto_makanan');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->string('alamat');
+            $table->binary('foto_makanan');
             $table->text('deskripsi');
             $table->integer('berat_makanan');
             $table->string('jenis_makanan');

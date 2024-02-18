@@ -16,10 +16,10 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->string('nama');
             $table->string('no_hp');
-            $table->string('foto_makanan');
+            $table->binary('foto_makanan');
             $table->bigInteger('berat_makanan');
             $table->string('jenis_makanan');
-            $table->string('status', 15);
+            $table->string('status');
             $table->timestamps();
         });
     }

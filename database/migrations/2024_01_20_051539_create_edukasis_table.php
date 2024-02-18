@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('edukasis', function (Blueprint $table) {
             $table->id();
-            $table->string('sampul');
+            $table->binary('sampul');
             $table->string('judul');
             $table->string('link_url');
             $table->text('deskripsi');
