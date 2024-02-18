@@ -20,9 +20,6 @@ class RiwayatDonasi extends Model
     }
 
 
-    protected $fillable = [
-        'user_id',
-        'donasi_id',
-        'status',
-    ];
+    protected $guarded = ['id'];
+
 }

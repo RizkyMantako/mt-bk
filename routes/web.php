@@ -75,6 +75,10 @@ Route::put('/proses_sampah/{id}', [SampahController::class, 'verifikasi'])->name
 Route::get('/riwayat_sampah', [SampahController::class, 'tolak'])->name('tolak_sampah');
 
 
+Route::put('/proses_donasi/{id}', [DonasiController::class, 'verifikasi'])->name('verifikasi_donasi');
+Route::get('/riwayat_donasi', [DonasiController::class, 'tolak'])->name('riwayat.riwayat_donasi');
+Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('proses.proses_donasi');
+
 
 Route::get('/edukasi', [EducationController::class, 'index'])->name('edukasis.edukasi');
 Route::post('/edukasi/save', [EducationController::class, 'store'])->name('edukasis.store');
@@ -83,11 +87,4 @@ Route::put('/edukasi/{id}/update', [EducationController::class, 'update'])->name
 Route::delete('/edukasi/{id}/delete', [EducationController::class, 'destroy'])->name('edukasis.destroy');
 Route::get('/sampah', [SampahController::class, 'index'])->name('sampah.sampah');
 Route::get('/donasi', [DonasiController::class, 'index'])->name('donasis.donasi');
-Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('proses.proses_donasi');
-Route::get('/riwayat_donasi', [DonasiController::class, 'tolak'])->name('riwayat.riwayat_donasi');
 
-// verifikasi donasi
-Route::get('/proses_donasi', [DonasiController::class, 'proses'])->name('verifikasi_donasi');
-
-// tolak donasi
-Route::get('/tolak_donasi', [DonasiController::class, 'tolak'])->name('tolak_donasi');

@@ -19,9 +19,5 @@ class ProsesDonasi extends Model
         return $this->belongsTo(Donasi::class);
     }
 
-    protected $fillable = [
-        'user_id',
-        'donasi_id',
-        'status',
-    ];
+    protected $guarded = ['id'];
 }
