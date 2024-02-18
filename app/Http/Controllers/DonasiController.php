@@ -134,7 +134,7 @@ class DonasiController extends Controller
     }
 
     public function getList() {
-        $donasi = Donasi::all();
+        $donasi = Donasi::all()->whereIn('status', ['Dalam Antrian', 'dalam antrian']);
         return response()->json([
             'success' => true,
             'data' => $donasi

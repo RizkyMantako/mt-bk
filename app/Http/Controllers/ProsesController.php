@@ -10,7 +10,7 @@ use App\Models\ProsesSampah;
 class ProsesController extends Controller
 {
     public function getListDonasi(){
-        $data = ProsesDonasi::all();
+        $data = ProsesDonasi::all()->where('status', 'InProses');
         return response()->json([
             'success' => true,
             'data' => $data
@@ -26,7 +26,7 @@ class ProsesController extends Controller
     }
 
     public function getListSampah(){
-        $data = ProsesSampah::all();
+        $data = ProsesSampah::all()->where('status', 'InProses');
         return response()->json([
             'success' => true,
             'data' => $data

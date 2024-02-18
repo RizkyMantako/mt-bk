@@ -133,7 +133,7 @@ class SampahController extends Controller
     }
 
     public function getList() {
-        $sampah = Sampah::all();
+        $sampah = Sampah::all()->whereIn('status', ['Dalam Antrian', 'dalam antrian']);
         return response()->json([
             'success' => true,
             'data' => $sampah

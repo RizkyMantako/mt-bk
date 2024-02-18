@@ -10,7 +10,7 @@ use App\Models\RiwayatSampah;
 class RiwayatController extends Controller
 {
     public function getListDonasi(){
-        $data = RiwayatDonasi::all();
+        $data = RiwayatDonasi::all()->whereIn('status', ['Selesai', 'selesai', 'Ditolak', 'ditolak']);
         return response()->json([
             'success' => true,
             'data' => $data
@@ -26,7 +26,7 @@ class RiwayatController extends Controller
     }
 
     public function getListSampah(){
-        $data = RiwayatSampah::all();
+        $data = RiwayatSampah::all()->whereIn('status', ['Selesai', 'selesai', 'Ditolak', 'ditolak']);
         return response()->json([
             'success' => true,
             'data' => $data
