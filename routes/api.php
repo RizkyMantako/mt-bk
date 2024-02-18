@@ -7,6 +7,7 @@ use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\ProsesController;
+use App\Http\Controllers\SampahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::middleware('auth:api')->group(function () {
     Route::post('donasi/add', [DonasiController::class, 'add']);
     Route::get('donasi/getlist', [DonasiController::class, 'getlist']);
     Route::get('donasi/detail/{id}', [DonasiController::class, 'detail']);
+});
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('sampah/add', [SampahController::class, 'add']);
+    Route::get('sampah/getlist', [SampahController::class, 'getlist']);
+    Route::get('sampah/detail/{id}', [SampahController::class, 'detail']);
 });
 
 Route::middleware('auth:api')->group(function () {

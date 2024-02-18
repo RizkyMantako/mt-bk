@@ -24,11 +24,11 @@ class Sampah extends Model
         return $this->hasOne(RiwayatSampah::class);
     }
 
-
-
     protected $fillable = [
         'user_id',
-        'detailakun_id',
+        'nama',
+        'no_hp',
+        'alamat',
         'foto_sampah',
         'berat_sampah',
         'deskripsi',
