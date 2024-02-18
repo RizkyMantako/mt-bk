@@ -20,6 +20,13 @@ class EducationController extends Controller
     public function store(Request $req)
     {
 
+        $req->validate([
+            'sampul' => 'required',
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'link_url' => 'required',
+            'tags' => 'required',
+        ]);
         $tagsArray = $req->input('tags', []);
 
         $filteredTags = array_filter($tagsArray, function ($value) {
@@ -52,6 +59,14 @@ class EducationController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'link_url' => 'required',
+            'tags' => 'required',
+        ]);
+
         $edukasi = Edukasi::findOrFail($id);
 
         // Mendapatkan data input dari form

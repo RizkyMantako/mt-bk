@@ -190,11 +190,11 @@
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
                             <textarea id="" cols="30" rows="10" class="form-control" id="deskripsi"
-                                name="deskripsi"></textarea>
+                                name="deskripsi" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Tags</label>
-                            <select class="form-control" id="tags" name="tags[]" multiple="multiple">
+                            <select class="form-control" id="tags" name="tags[]" multiple="multiple" required>
                             </select>
                         </div>
                     </div>
