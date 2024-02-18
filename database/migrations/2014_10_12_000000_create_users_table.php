@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedInteger('poin')->default(0);
-            $table->decimal('rupiah', 10, 3)->default(0.00);
+            $table->bigInteger('rupiah', 10, 3)->default(0);
             $table->string('alamat')->nullable();
             $table->string('rekening')->nullable();
             $table->rememberToken();

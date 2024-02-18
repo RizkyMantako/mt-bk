@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('foto_makanan');
             $table->text('deskripsi');
             $table->integer('berat_makanan');
-            $table->string('jenis_donasi');
+            $table->string('jenis_makanan');
             $table->string('status');
             $table->timestamps();
         });
