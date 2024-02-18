@@ -56,8 +56,10 @@ Route::middleware('auth:api')->group(function () {
 });
 
 Route::middleware('auth:api')->group(function () {
+    Route::post('proses/donasi/add', [ProsesController::class, 'addDonasi']);
     Route::get('proses/donasi/getlist', [ProsesController::class, 'getListDonasi']);
     Route::get('proses/donasi/detail/{id}', [ProsesController::class, 'getDetailDonasi']);
+    Route::post('proses/sampah/add', [ProsesController::class, 'addSampah']);
     Route::get('proses/sampah/detail/{id}', [ProsesController::class, 'getDetailSampah']);
     Route::get('proses/sampah/getlist', [ProsesController::class, 'getListSampah']);
 });

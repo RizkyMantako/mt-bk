@@ -112,10 +112,10 @@ class SampahController extends Controller
             'status' => 'nullable',
         ]);
     
-        $foto_makanan_path = null;
+        $foto_sampah_path = null;
         if ($request->file('foto_sampah')->isValid()) {
             $foto_sampah = $request->file('foto_sampah');
-            $foto_makanan_path = $foto_sampah->store('makanan_photos');
+            $foto_sampah_path = $foto_sampah->store('sampah_photos');
         }
     
         Sampah::create([
@@ -123,7 +123,7 @@ class SampahController extends Controller
             'nama' => $data['nama'],
             'no_hp' => $data['no_hp'],
             'alamat' => $data['alamat'],
-            'foto_sampah' => $foto_makanan_path,
+            'foto_sampah' => $foto_sampah_path,
             'deskripsi' => $data['deskripsi'],
             'berat_sampah' => $data['berat_sampah'],
             'status' => $data['status'],
