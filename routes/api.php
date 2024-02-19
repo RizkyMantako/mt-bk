@@ -29,6 +29,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::post('edit-profile', [AuthController::class, 'editProfile']);
     Route::get('user', [AuthController::class, 'getUserInfo']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });
 
 Route::middleware('auth:api')->group(function () {

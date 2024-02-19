@@ -16,6 +16,7 @@ class AuthController extends Controller {
             'email' => 'required|email|unique:users',
             'password' => 'required|string|confirmed|min:8',
             'no_hp' => 'required|string',
+            'no_dana' => 'required|string',
             'foto_profil' => 'nullable|image|max:2048', // Max size 2MB
             'alamat' => 'nullable|string',
         ]);
@@ -35,6 +36,7 @@ class AuthController extends Controller {
             'email' => $data['email'],
             'password' => $data['password'],
             'no_hp' => $data['no_hp'],
+            'no_dana' => $data['no_dana'],
             'foto_profil' => $foto_profil_path,
             'alamat' => $data['alamat'],
         ]);
@@ -75,6 +77,7 @@ class AuthController extends Controller {
             'email' => 'nullable|email|unique:users,email,'.$user->id,
             'password' => 'nullable|string|confirmed|min:8',
             'no_hp' => 'nullable|string',
+            'no_dana' => 'nullable|string',
             'foto_profil' => 'nullable|image|max:2048', // Max size 2MB
             'alamat' => 'nullable|string',
         ]);
