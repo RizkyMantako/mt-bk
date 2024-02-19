@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('no_hp');
             $table->string('alamat');
-            $table->string('foto_sampah');
+            $table->binary('foto_sampah');
             $table->text('deskripsi');
             $table->integer('berat_sampah');
             $table->string('status');

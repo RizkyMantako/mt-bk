@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('edukasis', function (Blueprint $table) {
-            $table->id();
-            $table->binary('sampul');
-            $table->string('judul');
-            $table->string('link_url');
-            $table->text('deskripsi');
-            $table->text('tags');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('no_dana');
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('edukasis');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('no_dana');
+        });
     }
 };

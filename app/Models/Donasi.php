@@ -33,6 +33,7 @@ class Donasi extends Model
         'deskripsi',
         'berat_makanan',
         'jenis_donasi',
+        'jenis_makanan',
         'status',
     ];
 }

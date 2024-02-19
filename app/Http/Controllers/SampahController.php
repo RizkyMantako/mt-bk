@@ -98,4 +98,62 @@ class SampahController extends Controller
         ]);
         return redirect('/riwayat_sampah');
     }
+
+    public function add(Request $request)
+    {
+        $data = $request->validate([
+            'user_id' => 'required',
+            'nama' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            'foto_sampah' => 'required|image',
+            'deskripsi' => 'required',
+            'berat_sampah' => 'required',
+            'status' => 'nullable',
+        ]);
+    
+        $foto_sampah_path = null;
+        if ($request->file('foto_sampah')->isValid()) {
+            $foto_sampah = $request->file('foto_sampah');
+            $foto_sampah_path = $foto_sampah->store('sampah_photos');
+        }
+    
+        Sampah::create([
+            'user_id' => $data['user_id'],
+            'nama' => $data['nama'],
+            'no_hp' => $data['no_hp'],
+            'alamat' => $data['alamat'],
+            'foto_sampah' => $foto_sampah_path,
+            'deskripsi' => $data['deskripsi'],
+            'berat_sampah' => $data['berat_sampah'],
+            'status' => $data['status'],
+        ]);
+    
+        return response()->json(['message' => 'Sampah created successfully.', 'data' => $data], 201);
+    }
+
+    public function getList() {
+        $sampah = Sampah::all()->whereIn('status', ['Dalam Antrian', 'dalam antrian']);
+        return response()->json([
+            'success' => true,
+            'data' => $sampah
+        ]);
+    }
+
+    public function detail($id)
+    {
+        $sampah = Sampah::find($id);
+
+        if (!$sampah) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Id tidak ditemukan',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $sampah,
+        ]);
+    }
 }

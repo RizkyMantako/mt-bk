@@ -14,8 +14,13 @@ return new class extends Migration
         Schema::create('proses_sampahs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('sampah_id');
-            $table->string('status', 10)->default('In Progres');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->string('alamat');
+            $table->binary('foto_sampah');
+            $table->integer('berat_sampah');
+            $table->text('deskripsi');
+            $table->string('status')->default('In Progres');
             $table->timestamps();
         });
     }

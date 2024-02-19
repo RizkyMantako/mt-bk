@@ -118,4 +118,29 @@ class EducationController extends Controller
 
         return redirect()->route('edukasis.edukasi')->with('success', 'User deleted successfully');
     }
+
+    public function getList() {
+        $edukasi = Edukasi::all();
+        return response()->json([
+            'success' => true,
+            'data' => $edukasi
+        ]);
+    }
+
+    public function detail($id)
+    {
+        $edukasi = Edukasi::find($id);
+
+        if (!$edukasi) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Id tidak ditemukan',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $edukasi,
+        ]);
+    }
 }
